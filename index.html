@@ -4,7 +4,11 @@
 <head>
     <meta charset="UTF-8" <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lieblingsorte der Webmapper:innen</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
 </head>
+
 <body>
     <header>
         <img src="images/header.jpg" alt="Wasser mit Skyline im Hintergrund">
@@ -15,7 +19,7 @@
     <main>
         <h1>Lieblingsorte der Webmapper:innen</h1>
         <h2>Vancouver, Kanada</h2>
-        <p><strong>Vancouver</strong> ist eine Stadt im Südwesten von <strong><em>British Columbia</em></strong> an der Westküste Kanadas. Sie liegt zwischen der Straße von Georgia und den Coast Mountains, rund 45 Kilometer nordwestlich der Grenze zu den USA. 
+        <p><strong>Vancouver</strong> ist eine Stadt im Südwesten von <strong><em>British Columbia</em></strong> an der Westküste Kanadas. Sie liegt zwischen der Straße von Georgia und den Coast Mountains, rund 45 Kilometer nordwestlich der Grenze zu den USA.
         </p>
         <p>Die Stadt ist bekannt für ihre landschaftlich reizvolle Lage. Hoch aufragende Berge prägen das Stadtbild; diese gehören zu den North Shore Mountains, der südlichsten Kette der Coast Mountains. Die drei Hausberge Grouse Mountain (1231 m), Mount Seymour (1449 m) und Mount Strachan (1454 m) liegen am Nordufer des Burrard Inlet direkt gegenüber der Stadt. An klaren Tagen ist im Südosten der Vulkan Mount Baker erkennbar, der im US-Bundesstaat Washington liegt. Die Berge an der Sunshine Coast im Nordwesten sowie Vancouver Island im Westen und Südwesten runden die Szenerie ab.</p>
         <p>Im Vergleich zum kanadischen Durchschnitt ist das Klima in Vancouver aufgrund des Einflusses der Kuroshio-Strömung ungewöhnlich mild. Die Winter sind die viertwärmsten in den vom kanadischen Umweltministerium erfassten Städten, nach Victoria, Nanaimo und Duncan (alle auf der nahe gelegenen Vancouver Island gelegen). Durch die Nähe zum Meer bildet sich ein Mikroklima, die Wintertemperaturen sind in der Regel 2 bis 4 °C wärmer und die Sommertemperaturen 3 bis 8 °C kälter als im Landesinneren. An durchschnittlich 46 Tagen im Jahr fällt die Tagestiefsttemperatur unter den Gefrierpunkt, an nur zwei Tagen unter -10 °C. Die durchschnittlichen Tageshöchstwerte betragen im Juli und August rund 22 °C, können aber vereinzelt auf mehr als 26 °C ansteigen.</p>
@@ -25,6 +29,9 @@
             <!--Bild von https://pixabay.com/de/photos/vancouver-skyline-british-columbia-4585887/-->
             <figcaption>Skyline Vancouver (Quelle: <a href="https://pixabay.com/de/photos/vancouver-skyline-british-columbia-4585887/">Pixabay</a>)</figcaption>
         </figure>
+
+        <h3>Übersichtskarte</h3>
+        <div id="map" style="width:900px;height:600px;border:1px solid silver"></div>
 
         <h3>Links</h3>
         <ul>
@@ -41,7 +48,16 @@
         </nav>
     </footer>
 
+<script>
+        var map = L.map('map').setView([49.28098, -123.12244], 11);
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+        var marker = L.marker([49.28098, -123.12244]).addTo(map);
+        marker.bindPopup("<b>Hello world!</b><br>I am a popup.").openPopup();
 
+    </script>
 </body>
 
 </html>
