@@ -212,7 +212,7 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 
   //loop für Etappen
-  for(let i=0; i<STOPS.length; i++) {
+  for(let i = 0; i < STOPS.length; i++) {
     console.log(STOPS[i]);
     //MArker zeichnen
     let marker = L.marker([STOPS[i].lat, STOPS[i].lng]).addTo(map);
@@ -230,16 +230,24 @@ marker.bindPopup(`
     if (STOPS[i].user == "johannauniibk") {
         console.log(STOPS[i].user, "meine Etappe:-)");
         map.setView([STOPS[i].lat, STOPS[i].lng], STOPS[i].zoom);
-    marker.openPopup();
+        marker.openPopup();
 }
 //Pulldown Menü befüllen
 let option = document.createElement("option");
 option.value = STOPS[i].user;
 option.text = STOPS[i].title;
 
-if (STOPS[i].user == "johannauniibk"){
+if (STOPS[i].user == "johannauniibk") {
     option.selected = true;
 }
 document.querySelector("#pulldown select").appendChild(option);
 
 }
+
+//auf Änerungen beim Pulldown reagieren
+document.querySelector("#pulldown select").onchange = function(evt) {
+    let url = `https://${evt.target.value}.github.io/nz`;
+    //console.log(evt.target.value);
+    //console.log(url);
+    window.location = url;
+    }
