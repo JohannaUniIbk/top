@@ -15,4 +15,8 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 }).addTo(map);
 let marker = L.marker([lat, lng]).addTo(map);
  //Popup definieren und öffnen
-marker.bindPopup("<b>Hello world!</b><br>This is Vancouver").openPopup();
+marker.bindPopup(`
+    <b>Hello world!</b>
+    <br>
+    This is Vancouver
+    `).openPopup();
