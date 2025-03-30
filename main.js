@@ -3,9 +3,9 @@ Script für die Lieblingsorte
 */
 
 let stop = {
-    nr.: 17,
-    title: Vancouver,
-    user: johannauniibk,
+    nr: 6,
+    title: "Vancouver",
+    user: "johannauniibk",
     lat: 49.28098,
     lng: -123.12244,
     zoom: 11,
@@ -13,21 +13,21 @@ let stop = {
 
 const STOPS = [
     {
-        
+
         nr: 1,
         title: "Cape Reinga",
         user: "vintiyannick",
         lat: -34.423889,
         lng: 172.6775,
         zoom: 13,
-        
+
     },
     {
         nr: 2,
         title: "Bay of Islands",
         user: "Ellinnaa",
         lat: -35.183333,
-        long: 174.166667,
+        lng: 174.166667,
         zoom: 11,
     },
     {
@@ -41,7 +41,7 @@ const STOPS = [
     {
         nr: 4,
         title: "Cormandel Peninsula",
-        usr: "Gregorysprenger2001",
+        user: "Gregorysprenger2001",
         lat: -37.882778,
         lng: 175.636667,
         zoom: 11,
@@ -56,11 +56,11 @@ const STOPS = [
     },
     {
         nr: 6,
-        title: "Taupo",
-        user: "johannauniibk",
-        lat: -38.690,
-        lng: 176.080,
-        zoom: 11,
+    title: "Vancouver",
+    user: "johannauniibk",
+    lat: 49.28098,
+    lng: -123.12244,
+    zoom: 11,
     },
     {
         nr: 7,
@@ -82,7 +82,7 @@ const STOPS = [
         nr: 9,
         title: "Wellington",
         user: "cs4151",
-        lat: "-41.2875",
+        lat: -41.2875,
         lng: 174.776111,
         zoom: 14,
     },
@@ -124,7 +124,7 @@ const STOPS = [
         user: "lizzie2911",
         lat: -44.7,
         lng: 169.15,
-        zoom: zoom,
+        zoom: 13,
     },
     {
         nr: 17,
@@ -168,7 +168,7 @@ const STOPS = [
     },
     {
         nr: 24,
-        titel: "Moeraki Boulders",
+        title: "Moeraki Boulders",
         user: "StephanPumpernik",
         lat: -45.345275,
         lng: 170.826061,
@@ -211,27 +211,27 @@ L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(map);
 
-  //loop für Etappen
-  for(let i = 0; i < STOPS.length; i++) {
+//loop für Etappen
+for (let i = 0; i < STOPS.length; i++) {
     console.log(STOPS[i]);
     //MArker zeichnen
     let marker = L.marker([STOPS[i].lat, STOPS[i].lng]).addTo(map);
-}
-
- //Popup definieren 
-marker.bindPopup(`
+    //Popup definieren 
+    marker.bindPopup(`
     <h2>${STOPS[i].title}</h2>
     <ul>
-        <li>Geogr. Breite: ${STOPS[i].lat.toFixed(5)}°</li>
+        <li>Geogr. Breite: ${STOPS[i].lat.toFixed(5)}° </li>
         <li>Geogr. Länge: ${STOPS[i].lng.toFixed(5)}°</li>
     </ul>
-    `);
+  
+`);
+
     //auf eigene Etappe blicken und PopUp öffnen
     if (STOPS[i].user == "johannauniibk") {
         console.log(STOPS[i].user, "meine Etappe:-)");
         map.setView([STOPS[i].lat, STOPS[i].lng], STOPS[i].zoom);
         marker.openPopup();
-}
+    }
 //Pulldown Menü befüllen
 let option = document.createElement("option");
 option.value = STOPS[i].user;
