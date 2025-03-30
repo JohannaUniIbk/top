@@ -199,7 +199,9 @@ const STOPS = [
         zoom: 11
     },
 
-]
+];
+console.log(STOPS[0]);
+console.log(STOPS[0].title);
 
 //Karte initialisieren
 let map = L.map('map').setView([stop.lat, stop.lng], stop.zoom);
@@ -207,10 +209,15 @@ let map = L.map('map').setView([stop.lat, stop.lng], stop.zoom);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-
-//MArker zeichnen
 }).addTo(map);
-let marker = L.marker([stop.lat, stop.lng]).addTo(map);
+
+  //loop für Etappen
+  for(let i=0; i<STOPS.length; i++) {
+    console.log(STOPS[i]);
+    //MArker zeichnen
+    let marker = L.marker([STOPS[i].lat, STOPS[i].lng]).addTo(map);
+}
+
  //Popup definieren und öffnen
 marker.bindPopup(`
     <h2>${stop.title}</h2>
