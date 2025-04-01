@@ -246,7 +246,7 @@ document.querySelector("#pulldown select").appendChild(option);
 
 //auf Änerungen beim Pulldown reagieren
 document.querySelector("#pulldown select").onchange = function(evt) {
-    let url = `https://${evt.target.value}.github.io/nz`;
+    let url = `https://${evt.target.value}.github.io/top`;
     //console.log(evt.target.value);
     //console.log(url);
     window.location = url;
