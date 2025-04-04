@@ -259,7 +259,9 @@ L.control.scale({
 
 //Layercontrol
 L.control.layers({
-
+"OpenStreetMap" : L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map),
+"OpenTopoMap" : L.tileLayer.provider('OpenTopoMap'),
+"Esri WorldImagery": L.tileLayer.provider('Esri.WorldImagery'),
 }, {
 
 }).addTo(map);
