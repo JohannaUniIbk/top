@@ -205,17 +205,17 @@ console.log(STOPS[0].title);
 
 //Karte initialisieren
 let map = L.map('map');
-//Hintergrundkarte definieren
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
+
+//Overlay definieren
+let overlay = {
+    etappen:L.featureGroup().addTo(map)
+}
 
 //loop für Etappen
 for (let i = 0; i < STOPS.length; i++) {
     console.log(STOPS[i]);
     //MArker zeichnen
-    let marker = L.marker([STOPS[i].lat, STOPS[i].lng]).addTo(map);
+    let marker = L.marker([STOPS[i].lat, STOPS[i].lng]).addTo(overlay.etappen);
     //Popup definieren 
     marker.bindPopup(`
     <h2>${STOPS[i].title}</h2>
@@ -257,11 +257,17 @@ L.control.scale({
     imperial: false,
 }).addTo(map);
 
+//Overlay definieren
+let overlays ={
+    etappen:L.featureGroup().addTo(map),
+}
+
 //Layercontrol
 L.control.layers({
 "OpenStreetMap" : L.tileLayer.provider('OpenStreetMap.Mapnik').addTo(map),
 "OpenTopoMap" : L.tileLayer.provider('OpenTopoMap'),
 "Esri WorldImagery": L.tileLayer.provider('Esri.WorldImagery'),
 }, {
-
+"Etappen": overlay.etappen,
 }).addTo(map);
+
